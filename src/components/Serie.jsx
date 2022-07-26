@@ -3,7 +3,7 @@ import { getActorsByID } from "../utils/getInfo"
 import CardActores from "./CardActores"
 
 
-const Serie = ({ data }) => {
+const Serie = ({ data, actores }) => {
     return (
         <div className="">
             <div className="card mb-3 mt-5 ">
@@ -21,7 +21,7 @@ const Serie = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <CardActores />
+            <CardActores actoresSerie={actores} />
         </div>
     )
 }

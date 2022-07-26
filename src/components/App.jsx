@@ -4,20 +4,25 @@ https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-j
 //Componentes
 import { useRef, useState } from "react"
 import Serie from "./Serie"
+import Loading from "./Loading"
 
 import useFetcher from '../hooks/useFetcher'
 
 
+
 function App() {
+
   const searchRef = useRef(null)
   const [query, setQuery] = useState('Bojack')
   const [opcion, setOpcion] = useState(1)
-  const { dataState: info, loading, actoresSerie } = useFetcher(query, opcion)
+  const { dataState: info, loading, actoresSerie } = useFetcher(query)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setQuery(searchRef.current.value)
     setOpcion(document.querySelector("#opcion").value)
+    e.target.reset();
   }
 
 
@@ -50,7 +55,7 @@ function App() {
         </nav>
       </div>
       <div className="justify-content-center d-block p-2">
-        <Serie data={info} />
+        {loading ? <Loading /> : <Serie data={info} actores={actoresSerie} />}
       </div>
     </div>
   )

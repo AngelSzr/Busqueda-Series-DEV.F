@@ -12,6 +12,9 @@ const useFetcher = (query = 'rick', opcion = 1) => {
         getData = async () => {
             const { data } = await getSerie(query)
             setDataState(data)
+            const { data: actores } = await getActorsByID(data.id)
+            setActoresSerie(actores)
+            setLoading(false)
         }
     } if (opcion === 2) {
         getData = async () => {
@@ -23,7 +26,7 @@ const useFetcher = (query = 'rick', opcion = 1) => {
     useEffect(() => {
         getData()
     }, [query])
-    return { dataState, loading }
+    return { dataState, loading, actoresSerie }
 }
 
 export default useFetcher
