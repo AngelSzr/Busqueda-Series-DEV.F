@@ -12,7 +12,7 @@ function App() {
   const searchRef = useRef(null)
   const [query, setQuery] = useState('Bojack')
   const [opcion, setOpcion] = useState(1)
-  const { dataState: info, loading } = useFetcher(query, opcion)
+  const { dataState: info, loading, actoresSerie } = useFetcher(query, opcion)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
