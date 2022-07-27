@@ -10,7 +10,7 @@ const Serie = ({ data, actores }) => {
                 <div className="row g-0">
                     <div className="col-md-4  justify-content-center">
                         <h5 className="card-title" >{data.name}</h5>
-                        <img src={data.image.medium} className="img-fluid rounded-start" alt="..." />
+                        <img src={data.image.original} className="img-fluid rounded-start" alt="..." />
                         <p className="card-text">{data.genres}</p>
                     </div>
                     <div className="col-md-8">
@@ -21,7 +21,15 @@ const Serie = ({ data, actores }) => {
                     </div>
                 </div>
             </div>
-            <CardActores actoresSerie={actores} />
+            (<ul className="row">
+                {actores.map((item) => (
+                    <li className="col-12 col-md-2 col-lg-3">
+                        <CardActores {...item} />
+                    </li>
+                ))
+                }
+            </ul>)
+
         </div>
     )
 }
