@@ -1,10 +1,26 @@
+import { useRef } from "react"
+
 const CardActores = (item) => {
+    const searchRef = useRef(null)
+    const newImage = (e) => {
+        e.preventDefault()
+        searchRef.current.attributes[1].value = item.person.image.medium
+        searchRef.current.offsetParent.lastChild.firstChild.lastChild.nodeValue = item.person.name
+    }
+    const oldImage = (e) => {
+        e.preventDefault()
+        searchRef.current.attributes[1].value = item.character.image.medium
+        searchRef.current.offsetParent.lastChild.firstChild.lastChild.nodeValue = item.character.name
+    }
+
+
     return (
-        <div className="card" style={{ width: '18rem' }}>
-            <img src={item.person.image.medium} className="card-img-top" alt="..." href={item.person.url} />
+        <div className="card shadow-sm p-3 mb-5 bg-body rounded" style={{ width: '18rem' }} onMouseOver={newImage} onMouseOut={oldImage}>
+            <a href={item.person.url}>
+                <img id={`${item.person.id}`} src={item.character.image.medium} ref={searchRef} className="card-img-top border" alt="..." />
+            </a>
             <div className="card-body">
-                <p className="card-text">{item.character.name}</p>
-                <p className="card-text">Edad</p>
+                <p className="card-text text-center">{item.character.name}</p>
             </div>
         </div>
     )

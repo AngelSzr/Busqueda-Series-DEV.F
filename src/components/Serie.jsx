@@ -1,35 +1,36 @@
-import { useState } from "react"
-import { getActorsByID } from "../utils/getInfo"
+//Componente
 import CardActores from "./CardActores"
 
-
-const Serie = ({ data, actores }) => {
+const Serie = ({ data, actores, seasons }) => {
+    console.log(seasons);
     return (
-        <div className="">
-            <div className="card mb-3 mt-5 ">
-                <div className="row g-0">
+        <div className="container-fluid d-flex row justify-content-center">
+            <div className="card mb-5 mt-2 w-75 shadow p-3 bg-body rounded">
+                <div className="row g-0 d-flex align-items-center">
                     <div className="col-md-4  justify-content-center">
-                        <h5 className="card-title" >{data.name}</h5>
                         <img src={data.image.original} className="img-fluid rounded-start" alt="..." />
-                        <p className="card-text">{data.genres}</p>
+                        <p className="card-text text-center">{data.genres}</p>
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <p className="card-text"><small className="text-muted">{`Emitido ${data.premiered}`}</small></p>
-                            <p className="card-text">{data.summary}</p>
+                            <h1 className="card-title fs-1" >{data.name}</h1>
+                            <p className="card-text fs-5 lh-base fst-italic">{data.summary}</p>
+                            <p className="card-text"><small className="text-muted fs-6">{`Emitido ${data.premiered}`}</small></p>
                         </div>
                     </div>
                 </div>
             </div>
-            (<ul className="row">
-                {actores.map((item) => (
-                    <li className="col-12 col-md-2 col-lg-3">
-                        <CardActores {...item} />
-                    </li>
-                ))
-                }
-            </ul>)
 
+            <div className="">
+                <ul className="row d-flex justify-content-center">
+                    {actores.map((item) => (
+                        <li className="col-12 col-md-2 col-lg-3 mb-4">
+                            <CardActores {...item} />
+                        </li>
+                    ))
+                    }
+                </ul>
+            </div>
         </div>
     )
 }
