@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 
 //Componentes
 import App from "./components/App"
@@ -14,6 +14,8 @@ export const Paths = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/busqueda" element={<App />} />
                 <Route path="/busqueda/:serieID" element={<Serie />} />
+                <Route path="/404" element={<p>Error</p>} />
+                <Route path="*" element={<Navigate to='404' />} />
             </Routes>
         </section>
     )
