@@ -8,6 +8,7 @@ const useFetcher = (query = 'rick') => {
         const { data } = await getSeries(query)
         setDataState(data)
         setLoading(false)
+        console.log(data);
     }
 
     useEffect(() => {

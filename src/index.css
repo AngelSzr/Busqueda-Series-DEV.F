@@ -5,8 +5,13 @@ ul {
 
 body {
   background-color: cornsilk;
+  size: auto;
 }
 
 .card-img-top {
   object-fit: cover
+}
+
+#introduccion {
+  background: cadetblue;
 }

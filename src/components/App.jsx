@@ -6,6 +6,7 @@ import Serie from "./Serie"
 import Loading from "./Loading"
 import Navbar from "./Navbar"
 import CatalogoSeries from "./CatalogoSeries"
+import { FaSearch } from 'react-icons/fa'
 
 //Hooks
 import { useRef, useState } from "react"
@@ -16,7 +17,7 @@ import useFetcher from '../hooks/useFetcher'
 function App() {
 
   const searchRef = useRef(null)
-  const [query, setQuery] = useState('Bojack')
+  const [query, setQuery] = useState('')
   const [opcion, setOpcion] = useState("1")
   const { dataState: info, loading, actoresSerie, temporadas } = useFetcher(query)
   //No recuerdo porque no funcionaba mandar la opción, pero ahora funciona
@@ -28,18 +29,15 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      <form className="d-flex mt-3 w-50" onSubmit={handleSubmit}>
+
+      <form className="d-flex mt-5 w-50 mx-auto" onSubmit={handleSubmit}>
         <div className="input-group mb-3">
-          <select className="form-select-sm btn btn-primary" id="opcion">
-            <option value={1}>Serie</option>
-            <option value={2}>Actor</option>
-          </select>
+
           <input type="text" ref={searchRef} className="form-control" aria-label="Text input with dropdown button" />
-          <button className="btn btn-primary" type="submit">Buscar</button>
+          <button className="btn btn-primary" type="submit"><FaSearch className="fs-4" /></button>
         </div>
       </form>
-      <div className="justify-content-center d-block p-2">
+      <div className="container w-75 p-2">
         {loading ? <Loading /> : <CatalogoSeries data={info} />}
       </div>
     </div>
