@@ -19,6 +19,9 @@ export const getActorsByID = async (id = "1") => {
 export const getSeriesByActorsID = async (id = "5858") => {
     return await axios.get(`https://api.tvmaze.com/people/${id}/castcredits`)
 }
+export const getSerieID = async (id = "184") => {
+    return await axios.get(`https://api.tvmaze.com/shows/${id}`)
+}
 export const getSeasons = async (id = "184") => { //id de la serie
     return await axios.get(`https://api.tvmaze.com/shows/${id}/seasons`)
 }

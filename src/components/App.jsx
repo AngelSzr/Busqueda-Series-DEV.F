@@ -4,8 +4,8 @@ https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-j
 //Componentes
 import Serie from "./Serie"
 import Loading from "./Loading"
-import CardActor from "./CardActor"
 import Navbar from "./Navbar"
+import CatalogoSeries from "./CatalogoSeries"
 
 //Hooks
 import { useRef, useState } from "react"
@@ -40,7 +40,7 @@ function App() {
         </div>
       </form>
       <div className="justify-content-center d-block p-2">
-        {loading ? <Loading /> : <CardActor data={info} />}
+        {loading ? <Loading /> : <CatalogoSeries data={info} />}
       </div>
     </div>
   )

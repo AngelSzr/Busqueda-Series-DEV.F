@@ -6,3 +6,7 @@ ul {
 body {
   background-color: cornsilk;
 }
+
+.card-img-top {
+  object-fit: cover
+}
